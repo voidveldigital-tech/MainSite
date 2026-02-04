@@ -38,10 +38,50 @@ export default function LandingHero() {
     return () => ctx?.revert?.();
   }, []);
 
+  function MiniStat({ label, value }: { label: string; value: string }) {
+    return (
+      <div className="rounded-xl border border-black/5 bg-white/70 p-3">
+        <p className="text-[11px] text-[#0b1028]/55">{label}</p>
+        <p className="mt-1 text-lg font-semibold text-[#0b1028]">{value}</p>
+      </div>
+    );
+  }
+
+  function Chip({ children }: { children: React.ReactNode }) {
+    return (
+      <span className="rounded-full border border-black/5 bg-white/70 px-3 py-1 text-xs text-[#0b1028]/70">
+        {children}
+      </span>
+    );
+  }
+
+  function RowItem({ title, meta }: { title: string; meta: string }) {
+    return (
+      <div className="flex items-center justify-between rounded-xl border border-black/5 bg-white/60 px-3 py-2">
+        <p className="text-xs font-medium text-[#0b1028]/80">{title}</p>
+        <p className="text-[11px] text-[#0b1028]/50">{meta}</p>
+      </div>
+    );
+  }
+
+  function ClientRow({ name, tag }: { name: string; tag: string }) {
+    return (
+      <div className="flex items-center justify-between rounded-xl border border-black/5 bg-white/60 px-3 py-2">
+        <div className="flex items-center gap-2">
+          <span className="h-7 w-7 rounded-full bg-gradient-to-br from-emerald-400/40 via-cyan-400/25 to-violet-400/35" />
+          <p className="text-xs font-medium text-[#0b1028]/80">{name}</p>
+        </div>
+        <span className="rounded-full bg-black/5 px-2 py-1 text-[11px] text-[#0b1028]/60">
+          {tag}
+        </span>
+      </div>
+    );
+  }
+
   return (
     <section
       ref={rootRef}
-      className="relative min-h-[47rem] w-full overflow-hidden bg-[#f2f4fb] pt-28"
+      className="relative min-h-[60rem] w-full overflow-hidden bg-[#f2f4fb] pt-28"
     >
       {/* BACKGROUND IMAGE */}
       <div
@@ -62,16 +102,16 @@ export default function LandingHero() {
             Perform
           </h1>
 
-          <p
-            data-animate
-            className="mt-6 max-w-xl text-xl text-[#0b1028]/65"
-          >
+          <p data-animate className="mt-6 max-w-xl text-xl text-[#0b1028]/65">
             We design and build high-performance websites and digital
             experiences tailored to your business. Trusted by innovative brands
             across Africa and beyond.
           </p>
 
-          <div data-animate className="mt-8 flex flex-col w-full md:flex-row  items-center gap-2">
+          <div
+            data-animate
+            className="mt-8 flex flex-col w-full md:flex-row  items-center gap-2"
+          >
             <button className="rounded-full w-full bg-white/85 px-9 py-4 text-base border border-violet-300/70 cursor-pointer font-medium hover:bg-violet-100 transition-all duration-300">
               Get started
             </button>
@@ -84,7 +124,11 @@ export default function LandingHero() {
         </div>
 
         {/* RIGHT (ready for later animation) */}
-        <div data-animate className="relative h-[420px] w-full" />
+        {/* RIGHT (hero visual) */}
+        <div data-animate className="relative h-[520px] w-full">
+          {/* glow blobs */}
+          <img src="/animal/digital-owl.webp" alt="hero image" className=" rounded-xl w-[34rem] top-0 left-50 absolute"/>
+        </div>
       </div>
     </section>
   );
